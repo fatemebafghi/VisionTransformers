@@ -1,20 +1,18 @@
 
-from turtle import shape
+from base_model import BaseModel
 from transformers import ViTFeatureExtractor, ViTForImageClassification
 from PIL import Image
 from typing import Dict,List
 from logzero import logger
 
-class Model:
+class Model(BaseModel):
     """ Pass """
     def __init__(self) -> None:
         self.model = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
         self.feature_extractor = ViTFeatureExtractor.from_pretrained('google/vit-base-patch16-224')
 
     def predict(self,image_path:str) -> Dict:
-
         image = Image.open(image_path)
-        # logger.debug(f"shape = {shape()}")
         input = self._preprocess(image)
         output = self.model(**input)
         logits = output.logits
