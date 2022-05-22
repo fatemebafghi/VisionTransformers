@@ -13,27 +13,30 @@ click.command()
               help='config file for create pipeline in json format')
 
 
-def main(configfile):
+def main():
     """pass"""
 
     if not os.path.exists('logs/pylogs'):
         os.makedirs('logs/pylogs')
     logzero.logfile("logs/pylogs/logfile.log", maxBytes=1e6)
 
-    with codecs.open(configfile, 'r', 'utf8') as f:
-        jsonconfig = json.load(f)
+    # with codecs.open(configfile, 'r', 'utf8') as f:
+    #     jsonconfig = json.load(f)
 
-    general_setting = jsonconfig.get('general_setting', {})
+    # general_setting = jsonconfig.get('general_setting', {})
 
-    mode = general_setting.get("mode","")
+    # mode = general_setting.get("mode","")
 
+    mode = "classify"
     if mode == "classify":
+        logger.info("------- In classification Mode --------")
         model = cl_model()
         image_path = "index.jpeg"
         result = model.predict(image_path)
         logger.info(result)
 
     elif mode == "detect":
+        logger.info("------- In Detection Mode ---------")
         pass
 
     else:
