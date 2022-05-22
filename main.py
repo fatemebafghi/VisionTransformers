@@ -1,7 +1,7 @@
 # from transformers import pipeline
 # import tensorflow as tf
 from logzero import logger
-from model import Model
+from Classifier import Model
 
 # classifier = pipeline("sentiment-analysis")
 # classifier("We are very happy to show you the 🤗 Transformers library.")
