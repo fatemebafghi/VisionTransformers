@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+    VisionTransformer: 
+        build: .
+        image: vit:1.0
+        container_name: vit
+        hostname: vit
+        volumes:
+            - ./config.json:/usr/src/VisionTransformer/config.json
+            - ./logs:/usr/src/VisionTransformer/logs
+            - /etc/localtime:/etc/localtime:ro
+
+
+
+

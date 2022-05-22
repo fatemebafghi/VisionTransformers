@@ -7,7 +7,9 @@ from PIL import Image
 
 
 class Model(BaseModel):
-    """pass"""
+
+    """This Model tries to detect objects which are located in a picture """
+    
     def __init__(self, model = "Yolos") -> None:
         self.Model = model
         # self.configs = YolosConfig()
